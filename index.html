@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JPD123 Master - Japanese Learning App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="min-h-screen flex flex-col text-slate-800 bg-slate-50">
+
+    <!-- App Header -->
+    <header class="bg-white shadow-sm sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-4 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <h1 class="text-2xl font-bold text-indigo-700 flex items-center gap-2">
+                <i class="fa-solid fa-graduation-cap"></i> JPD123 Master
+            </h1>
+            <nav class="flex gap-2" id="lesson-selector">
+                <button onclick="handleLessonChange('4')" class="lesson-btn px-4 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-md" data-lesson="4">Bài 4</button>
+                <button onclick="handleLessonChange('5')" class="lesson-btn px-4 py-1.5 rounded-full font-medium text-slate-500 hover:bg-indigo-50" data-lesson="5">Bài 5</button>
+                <button onclick="handleLessonChange('6')" class="lesson-btn px-4 py-1.5 rounded-full font-medium text-slate-500 hover:bg-indigo-50" data-lesson="6">Bài 6</button>
+                <button onclick="handleLessonChange('7')" class="lesson-btn px-4 py-1.5 rounded-full font-medium text-slate-500 hover:bg-indigo-50" data-lesson="7">Bài 7</button>
+            </nav>
+        </div>
+        
+        <div class="max-w-6xl mx-auto px-4 flex gap-6 text-sm font-semibold border-b border-slate-200">
+            <button onclick="handleModeChange('kanji')" class="mode-btn py-3 border-b-2 border-indigo-600 text-indigo-600 flex items-center gap-2" data-mode="kanji">
+                <i class="fa-solid fa-layer-group"></i> Thẻ Kanji
+            </button>
+            <button onclick="handleModeChange('qa')" class="mode-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 flex items-center gap-2" data-mode="qa">
+                <i class="fa-solid fa-comments"></i> Bộ Q&A
+            </button>
+        </div>
+    </header>
+
+    <main class="flex-grow max-w-6xl mx-auto w-full p-4 sm:p-6 flex flex-col items-center">
+        <!-- Flashcard View -->
+        <section id="kanji-section" class="w-full flex flex-col items-center">
+            <div class="flex justify-between w-full max-w-2xl mb-4 items-center">
+                <span class="text-sm font-medium text-slate-500 bg-slate-200 px-3 py-1 rounded-full">Kanji <span id="label-lesson-kanji">Bài 4</span></span>
+                <span class="text-sm font-bold text-slate-400" id="card-counter">0 / 0</span>
+                <button onclick="shuffleFlashcards()" class="text-sm font-medium bg-white border border-slate-300 px-3 py-1 rounded hover:bg-slate-50 shadow-sm"><i class="fa-solid fa-shuffle"></i> Trộn thẻ</button>
+            </div>
+
+            <div class="flip-card w-full max-w-2xl h-80 cursor-pointer [perspective:1000px]" id="kanji-card" onclick="toggleCardFlip()">
+                <div class="flip-card-inner relative w-full h-full text-center shadow-lg rounded-3xl border border-slate-200 bg-white">
+                    
+                    <div class="flip-card-front absolute top-0 left-0 w-full h-full bg-white rounded-3xl flex flex-col items-center justify-center p-6">
+                        <button onclick="speakJapanese(event)" class="absolute top-6 right-6 text-slate-300 hover:text-indigo-500 transition text-2xl z-10">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="text-8xl font-black text-slate-800" id="display-kanji">-</div>
+                        <div class="mt-8 text-slate-400 text-sm">Chạm để xem đáp án</div>
+                    </div>
+
+                    <div class="flip-card-back absolute top-0 left-0 w-full h-full bg-indigo-600 text-white rounded-3xl flex flex-col items-center justify-center p-6">
+                        <button onclick="speakJapanese(event)" class="absolute top-6 right-6 text-indigo-300 hover:text-white transition text-2xl z-10">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="text-3xl font-bold tracking-widest text-indigo-200 mb-2" id="display-hanviet">HÁN VIỆT</div>
+                        <div class="text-5xl font-bold mb-6" id="display-hiragana">ひらがな</div>
+                        <div class="text-2xl font-medium bg-white/20 px-6 py-2 rounded-xl" id="display-meaning">Nghĩa</div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="flex gap-4 mt-8 w-full max-w-2xl justify-center">
+                <button onclick="navigateCard(-1)" class="w-14 h-14 rounded-full bg-white shadow-md border flex items-center justify-center text-slate-600 hover:text-indigo-600 transition text-xl"><i class="fa-solid fa-arrow-left"></i></button>
+                <button onclick="navigateCard(1)" class="w-14 h-14 rounded-full bg-white shadow-md border flex items-center justify-center text-slate-600 hover:text-indigo-600 transition text-xl"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section>
+
+        <!-- Q&A View -->
+        <section id="qa-section" class="w-full hidden">
+            <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2"><i class="fa-solid fa-comments text-indigo-500"></i> Q&A <span id="label-lesson-qa">Bài 4</span></h2>
+            <div id="qa-container" class="grid grid-cols-1 gap-6"></div>
+        </section>
+
+        <div id="error-display" class="hidden w-full max-w-2xl mt-10 p-6 bg-red-50 border border-red-200 rounded-xl text-center text-red-600"></div>
+    </main>
+
+    <script>
+        /**
+         * Global App State
+         */
+        let appData = {};
+        const state = {
+            lesson: '4',
+            mode: 'kanji',
+            cardIndex: 0,
+            flashcards: []
+        };
+
+        const CATEGORY_TIME_KEYWORDS = ['Số', 'Thời gian', 'Thời lượng', 'Đếm', 'tháng', 'năm', 'tuần', 'ngày', 'giờ', 'phút'];
+
+        /**
+         * Entry point: Fetch local data and initialize UI
+         */
+        async function startApp() {
+            try {
+                const response = await fetch('data.txt');
+                if (!response.ok) throw new Error("Data file not found");
+                appData = await response.json();
+                renderCurrentView();
+            } catch (err) {
+                displayErrorMessage("Error: Could not load data.txt. Ensure JSON format is valid.");
+            }
+        }
+
+        /**
+         * Main render controller
+         */
+        function renderCurrentView() {
+            const lessonData = appData[state.lesson];
+            if (!lessonData) return;
+
+            if (state.mode === 'kanji') {
+                state.flashcards = [...lessonData.kanji];
+                updateFlashcardContent();
+            } else {
+                renderQAList(lessonData.qa, lessonData.vocab);
+            }
+        }
+
+        // --- FLASHCARD ENGINE ---
+
+        function updateFlashcardContent() {
+            const card = state.flashcards[state.cardIndex];
+            if (!card) return;
+
+            document.getElementById('display-kanji').textContent = card.kanji;
+            document.getElementById('display-hiragana').textContent = card.hiragana;
+            document.getElementById('display-hanviet').textContent = card.hanviet;
+            document.getElementById('display-meaning').textContent = card.meaning;
+            document.getElementById('card-counter').textContent = `${state.cardIndex + 1} / ${state.flashcards.length}`;
+            document.getElementById('kanji-card').classList.remove('flipped');
+        }
+
+        function navigateCard(direction) {
+            state.cardIndex = (state.cardIndex + direction + state.flashcards.length) % state.flashcards.length;
+            updateFlashcardContent();
+        }
+
+        function toggleCardFlip() {
+            document.getElementById('kanji-card').classList.toggle('flipped');
+        }
+
+        function shuffleFlashcards() {
+            state.flashcards.sort(() => Math.random() - 0.5);
+            state.cardIndex = 0;
+            updateFlashcardContent();
+        }
+
+        /**
+         * Voice synthesis for Japanese text
+         */
+        function speakJapanese(event) {
+            if(event) event.stopPropagation(); // Prevent card flip
+            const card = state.flashcards[state.cardIndex];
+            if (!card) return;
+
+            window.speechSynthesis.cancel();
+            const utterance = new SpeechSynthesisUtterance(card.kanji);
+            const voices = window.speechSynthesis.getVoices();
+            const googleVoice = voices.find(voice => voice.name.includes('Google') && voice.lang === 'ja-JP');
+            
+            if (googleVoice) {
+                utterance.voice = googleVoice;
+            }
+            
+            utterance.lang = 'ja-JP';
+            utterance.rate = 0.85;
+            utterance.onerror = (event) => {
+                console.error("Lỗi phát âm:", event.error);
+                alert("Lỗi âm thanh: " + event.error);
+            };
+
+            window.speechSynthesis.speak(utterance);
+        }
+
+        // --- Q&A ENGINE ---
+
+        /**
+         * Build and inject the Q&A list into the DOM
+         */
+        function renderQAList(questions, lessonVocab) {
+            const container = document.getElementById('qa-container');
+            container.innerHTML = '';
+
+            questions.forEach((item, index) => {
+                const vocabSection = createVocabSection(item.vocabTags, lessonVocab, index);
+                const card = document.createElement('div');
+                card.className = "bg-white rounded-2xl p-6 shadow-sm border border-slate-200";
+                card.innerHTML = `
+                    <div class="flex items-center gap-3 mb-6">
+                        <span class="w-8 h-8 rounded-full bg-indigo-100 text-indigo-700 font-bold flex items-center justify-center">${index + 1}</span>
+                        <h3 class="text-lg font-bold text-slate-800">${item.type}</h3>
+                    </div>
+                    <div class="space-y-4 text-sm sm:text-base">
+                        <div class="flex flex-col sm:flex-row"><div class="sm:w-1/4 text-slate-500 font-semibold">Câu hỏi:</div><div class="sm:w-3/4 font-bold text-indigo-900">${item.question}</div></div>
+                        <div class="flex flex-col sm:flex-row"><div class="sm:w-1/4 text-slate-500 font-semibold">Nhận biết:</div><div class="sm:w-3/4 text-orange-600 italic">${item.sign}</div></div>
+                        <div class="flex flex-col sm:flex-row"><div class="sm:w-1/4 text-slate-500 font-semibold">Trả lời:</div><div class="sm:w-3/4 text-emerald-700 font-medium">${item.answer}</div></div>
+                        <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 italic text-slate-600">${item.example}</div>
+                    </div>
+                    ${vocabSection}
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        /**
+         * Dynamic tab switcher for Vocabulary
+         */
+        window.switchTab = function(btn, showId, hideId) {
+            const nav = btn.parentElement;
+            nav.querySelectorAll('button').forEach(b => {
+                b.classList.remove('border-indigo-600', 'text-indigo-600');
+                b.classList.add('border-transparent', 'text-slate-500');
+            });
+            btn.classList.replace('border-transparent', 'border-indigo-600');
+            btn.classList.replace('text-slate-500', 'text-indigo-600');
+
+            document.getElementById(showId).classList.remove('hidden');
+            document.getElementById(hideId).classList.add('hidden');
+        }
+
+        /**
+         * Logics to group vocabulary and return formatted HTML
+         */
+        function createVocabSection(tags, library, qId) {
+            if (!tags) return '';
+            const matched = library.filter(v => tags.includes(v.category));
+            if (matched.length === 0) return '';
+
+            const timeBased = matched.filter(v => CATEGORY_TIME_KEYWORDS.some(k => v.category.includes(k)));
+            const general = matched.filter(v => !timeBased.includes(v));
+
+            let html = '';
+            if (general.length > 0 && timeBased.length > 0) {
+                html = `
+                    <div class="flex gap-4 border-b border-slate-200 mb-4 overflow-x-auto scrollbar-hide">
+                        <button class="px-4 py-2 border-b-2 border-indigo-600 text-indigo-600 font-semibold transition" onclick="switchTab(this, 'v-gen-${qId}', 'v-time-${qId}')">Từ vựng chung</button>
+                        <button class="px-4 py-2 border-b-2 border-transparent text-slate-500 font-medium transition" onclick="switchTab(this, 'v-time-${qId}', 'v-gen-${qId}')">Số đếm & Thời gian</button>
+                    </div>
+                    <div id="v-gen-${qId}">${createVocabTable(general)}</div>
+                    <div id="v-time-${qId}" class="hidden">${createVocabTable(timeBased)}</div>
+                `;
+            } else {
+                html = createVocabTable(matched);
+            }
+
+            return `
+                <div class="mt-6 border-t pt-4">
+                    <button onclick="toggleVisibility('vbox-${qId}')" class="text-sm font-bold text-indigo-600 flex items-center gap-2">
+                        <i class="fa-solid fa-book"></i> Xem từ vựng liên quan
+                    </button>
+                    <div id="vbox-${qId}" class="hidden mt-4">${html}</div>
+                </div>
+            `;
+        }
+
+        function createVocabTable(data) {
+            return `
+                <div class="overflow-x-auto border rounded-xl">
+                    <table class="w-full text-left text-xs sm:text-sm">
+                        <thead class="bg-indigo-50 text-indigo-800">
+                            <tr><th class="p-2 w-1/4">Loại</th><th class="p-2 w-2/4">Từ vựng</th><th class="p-2 w-1/4">Nghĩa</th></tr>
+                        </thead>
+                        <tbody>
+                            ${data.map(v => `<tr class="border-t"><td class="p-2 text-slate-400">${v.category}</td><td class="p-2 font-bold text-indigo-700">${v.word}</td><td class="p-2">${v.meaning}</td></tr>`).join('')}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+        }
+
+        // --- NAVIGATION HANDLERS ---
+
+        function handleLessonChange(num) {
+            state.lesson = num;
+            state.cardIndex = 0;
+            document.querySelectorAll('.lesson-btn').forEach(b => {
+                const active = b.dataset.lesson === num;
+                b.className = active ? "lesson-btn px-4 py-1.5 rounded-full font-semibold bg-indigo-600 text-white shadow-md" : "lesson-btn px-4 py-1.5 rounded-full font-medium text-slate-500 hover:bg-indigo-50";
+            });
+            document.getElementById('label-lesson-kanji').textContent = `Bài ${num}`;
+            document.getElementById('label-lesson-qa').textContent = `Bài ${num}`;
+            renderCurrentView();
+        }
+
+        function handleModeChange(mode) {
+            state.mode = mode;
+            document.querySelectorAll('.mode-btn').forEach(b => {
+                const active = b.dataset.mode === mode;
+                b.className = active ? "mode-btn py-3 border-b-2 border-indigo-600 text-indigo-600 flex items-center gap-2" : "mode-btn py-3 border-b-2 border-transparent text-slate-500 hover:text-indigo-600 flex items-center gap-2";
+            });
+            document.getElementById('kanji-section').classList.toggle('hidden', mode !== 'kanji');
+            document.getElementById('qa-section').classList.toggle('hidden', mode !== 'qa');
+            renderCurrentView();
+        }
+
+        function toggleVisibility(id) {
+            document.getElementById(id).classList.toggle('hidden');
+        }
+
+        function displayErrorMessage(msg) {
+            const err = document.getElementById('error-display');
+            err.classList.remove('hidden');
+            err.textContent = msg;
+        }
+
+        // Global Keyboard Listeners
+        document.addEventListener('keydown', (e) => {
+            if (state.mode !== 'kanji') return;
+            if (e.key === 'ArrowRight') navigateCard(1);
+            if (e.key === 'ArrowLeft') navigateCard(-1);
+            if (e.key === ' ') { e.preventDefault(); toggleCardFlip(); }
+            if (e.key.toLowerCase() === 's') speakJapanese();
+        });
+
+        window.onload = startApp;
+
+        
+    </script>
+</body>
+</html>
