@@ -109,6 +109,7 @@ function navigateStarredCard(direction) {
 
 // Flip starred card
 function toggleStarredCardFlip() {
+   if (event && event.target.closest('button')) return;
     document.getElementById('starred-card').classList.toggle('flipped');
 }
 
@@ -153,6 +154,7 @@ function navigateCard(direction) {
 
 // Flip main Kanji card
 function toggleCardFlip() {
+    if (event && event.target.closest('button')) return;
     document.getElementById('kanji-card').classList.toggle('flipped');
 }
 
