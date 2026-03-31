@@ -50,6 +50,11 @@
                 <div class="flip-card-inner relative w-full h-full text-center shadow-lg rounded-3xl border border-slate-200 bg-white">
                     
                     <div class="flip-card-front absolute top-0 left-0 w-full h-full bg-white rounded-3xl flex flex-col items-center justify-center p-6">
+                        <!-- toggleStar Front -->
+                        <button onclick="toggleStar(event)" class="star-btn absolute top-6 left-6 text-2xl z-10 transition">
+                            <i class="fa-regular fa-star text-slate-300 hover:text-yellow-400"></i>
+                        </button>
+
                         <button onclick="speakJapanese(event)" class="absolute top-6 right-6 text-slate-300 hover:text-indigo-500 transition text-2xl z-10">
                             <i class="fa-solid fa-volume-high"></i>
                         </button>
@@ -58,6 +63,11 @@
                     </div>
 
                     <div class="flip-card-back absolute top-0 left-0 w-full h-full bg-indigo-600 text-white rounded-3xl flex flex-col items-center justify-center p-6">
+                        <!-- toggleStar Back -->
+                        <button onclick="toggleStar(event)" class="star-btn absolute top-6 left-6 text-2xl z-10 transition">
+                            <i class="fa-regular fa-star text-indigo-300 hover:text-yellow-400"></i>
+                        </button>
+
                         <button onclick="speakJapanese(event)" class="absolute top-6 right-6 text-indigo-300 hover:text-white transition text-2xl z-10">
                             <i class="fa-solid fa-volume-high"></i>
                         </button>
@@ -76,6 +86,54 @@
         </section>
 
         <!-- Q&A View -->
+        <section id="starred-section" class="w-full flex flex-col items-center mt-12 pt-10 border-t-2 border-dashed border-slate-200 hidden">
+            <div class="flex items-center gap-2 mb-6">
+                <i class="fa-solid fa-star text-yellow-400 text-2xl"></i>
+                <h2 class="text-2xl font-bold text-slate-700">Từ cần ôn kỹ</h2>
+            </div>
+            
+            <div class="flex justify-between w-full max-w-2xl mb-4 items-center">
+                <span class="text-sm font-medium text-amber-700 bg-amber-100 px-3 py-1 rounded-full">Danh sách tổng hợp</span>
+                <span class="text-sm font-bold text-slate-400" id="starred-counter">0 / 0</span>
+                <button onclick="shuffleStarredCards()" class="text-sm font-medium bg-white border border-slate-300 px-3 py-1 rounded hover:bg-slate-50 shadow-sm text-slate-600"><i class="fa-solid fa-shuffle"></i> Trộn thẻ</button>
+            </div>
+
+            <!--  ToggleStar Flashcard  -->
+            <div class="flip-card w-full max-w-2xl h-80 cursor-pointer [perspective:1000px]" id="starred-card" onclick="toggleStarredCardFlip()">
+                <div class="flip-card-inner relative w-full h-full text-center shadow-lg rounded-3xl border border-amber-200 bg-white">
+                    
+                    <!-- toggleStar Front Flashcard-->
+                    <div class="flip-card-front absolute top-0 left-0 w-full h-full bg-amber-50 rounded-3xl flex flex-col items-center justify-center p-6">
+                        <button onclick="removeStarredCard(event)" class="absolute top-6 left-6 text-2xl z-10 text-yellow-500 hover:text-slate-300 transition" title="Bỏ sao">
+                            <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button onclick="speakJapanese(event, null, true)" class="absolute top-6 right-6 text-amber-300 hover:text-amber-600 transition text-2xl z-10">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="text-8xl font-black text-slate-800" id="star-display-kanji">-</div>
+                        <div class="mt-8 text-amber-600/60 text-sm">Chạm để xem đáp án</div>
+                    </div>
+
+                    <!-- toggleStar Back Flashcard-->
+                    <div class="flip-card-back absolute top-0 left-0 w-full h-full bg-amber-500 text-white rounded-3xl flex flex-col items-center justify-center p-6">
+                        <button onclick="removeStarredCard(event)" class="absolute top-6 left-6 text-2xl z-10 text-white hover:text-amber-200 transition" title="Bỏ sao">
+                            <i class="fa-solid fa-star"></i>
+                        </button>
+                        <button onclick="speakJapanese(event, null, true)" class="absolute top-6 right-6 text-amber-200 hover:text-white transition text-2xl z-10">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                        <div class="text-3xl font-bold tracking-widest text-amber-100 mb-2" id="star-display-hanviet">HÁN VIỆT</div>
+                        <div class="text-5xl font-bold mb-6" id="star-display-hiragana">ひらがな</div>
+                        <div class="text-2xl font-medium bg-white/20 px-6 py-2 rounded-xl" id="star-display-meaning">Nghĩa</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex gap-4 mt-8 w-full max-w-2xl justify-center">
+                <button onclick="navigateStarredCard(-1)" class="w-14 h-14 rounded-full bg-white shadow-md border flex items-center justify-center text-slate-600 hover:text-amber-600 transition text-xl"><i class="fa-solid fa-arrow-left"></i></button>
+                <button onclick="navigateStarredCard(1)" class="w-14 h-14 rounded-full bg-white shadow-md border flex items-center justify-center text-slate-600 hover:text-amber-600 transition text-xl"><i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+        </section> 
         <section id="qa-section" class="w-full hidden">
             <h2 class="text-2xl font-bold text-slate-800 mb-6 flex items-center gap-2"><i class="fa-solid fa-comments text-indigo-500"></i> Q&A <span id="label-lesson-qa">Bài 4</span></h2>
             <div id="qa-container" class="grid grid-cols-1 gap-6"></div>
