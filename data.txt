@@ -57,26 +57,42 @@
     "qa": [
       {
         "type": "Khoảng cách / Thời gian di chuyển",
-        "question": "～から～まで どのくらいですか。",
+        "question": "～から～まで どのくらいですか。<br>～から～まで ～で どのくらいですか。",
         "sign": "Nghe thấy: から, まで, どのくらい (Bao lâu)",
-        "answer": "[Phương tiện] + で + [Thời gian] + ぐらいです。 (Nếu đi bộ thì KHÔNG dùng で)",
-        "example": "バイクで 20分くらいです。(Đi xe máy khoảng 20 phút) / あるいて 10分ぐらいです。(Đi bộ khoảng 10 phút)",
-        "vocabTags": ["Phương tiện", "Thời lượng", "Số đếm cơ bản", "Thời gian (Phút)", "Thời gian (Giờ)"]
+        "answer": "Trả lời: [Phương tiện] <span class='font-bold text-rose-600'>で</span> [Thời lượng] くらいです。<br><em class='text-xs text-slate-500'>* Ngoại lệ: Đi bộ (あるいて) thì KHÔNG dùng で</em>",
+        "example": "バス <span class='font-bold text-rose-600'>で</span> 2じかんくらいです。(Đi xe buýt khoảng 2 tiếng)<br>あるいて 10ぷんぐらいです。(Đi bộ khoảng 10 phút)",
+        "vocabTags": ["Phương tiện", "Thời lượng"]
       },
       {
-        "type": "Miêu tả địa điểm",
-        "question": "～は どんなところ / まち ですか。",
-        "sign": "Nghe thấy: どんな (Donna - Như thế nào)",
-        "answer": "TH1: [Tính từ な] + な + ところ/まち です。\nTH2: [Tính từ い] + ところ/まち です。",
-        "example": "きれいな まちです。(Là thành phố đẹp) / あたらしい まちです。(Là thành phố mới)",
+        "type": "Đánh giá cảm nhận (Chung chung)",
+        "question": "～は どうですか。",
+        "sign": "Nghe thấy: どう (Như thế nào)",
+        "answer": "Trả lời trực tiếp bằng [Tính từ].<br><span class='font-semibold'>Khẳng định:</span> はい、[Tính từ] です。<br><span class='font-semibold'>Phủ định:</span> いいえ、[Tính từ] <span class='font-bold text-rose-600'>くないです / じゃありません</span>。",
+        "example": "あたらしいです。(Rất mới)<br>ベトナムは 12がつ あついですか。➔ いいえ、あつくないです。(Không, không nóng)",
+        "vocabTags": ["Tính từ", "Thời tiết"]
+      },
+      {
+        "type": "Miêu tả tính chất (Cụ thể nơi chốn)",
+        "question": "～は どんなところ / まち / 大学 / 国ですか。",
+        "sign": "Nghe thấy: どんな (Donna - Như thế nào) + N",
+        "answer": "[Tính từ <span class='font-bold text-rose-600'>な</span>] + <span class='font-bold text-rose-600'>な</span> + ところ/まち/だいがく です。<br>[Tính từ い] + ところ/まち/だいがく です。",
+        "example": "きれい<span class='font-bold text-rose-600'>な</span> まちです。(Là thành phố đẹp)<br>いい だいがくです。(Là trường ĐH tốt)",
+        "conjugation": {
+          "title": "Cách nhận biết Tính từ な và Tính từ い",
+          "rules": [
+            "<span class='font-bold text-indigo-700'>Tính từ い:</span> Tận cùng có chữ <span class='font-bold text-rose-500'>い</span> (VD: おおきい, あたらしい, いい...)",
+            "<span class='font-bold text-indigo-700'>Tính từ な:</span> Thường không kết thúc bằng い (VD: しずか, にぎやか...)",
+            "<span class='font-bold text-rose-600'>★ Ngoại lệ (Tận cùng là い nhưng lại là Tính từ な):</span><ul class='list-disc pl-5 mt-1 text-slate-600'><li><span class='font-semibold'>きれい</span> (Đẹp/Sạch sẽ)</li><li><span class='font-semibold'>ゆうめい</span> (Nổi tiếng)</li><li><span class='font-semibold'>きらい</span> (Ghét)</li></ul>"
+          ]
+        },
         "vocabTags": ["Tính từ", "Địa điểm"]
       },
       {
-        "type": "Sự tồn tại (Có cái gì ở đâu)",
-        "question": "～に きょうかい / おてらが ありますか。",
-        "sign": "Nghe thấy: ～に ... ありますか",
-        "answer": "はい、あります。 / いいえ、ありません。",
-        "example": "はい、おてらがあります。(Vâng, có ngôi chùa)",
+        "type": "Hỏi Sự tồn tại (Có cái gì ở đâu)",
+        "question": "～さんのまちに なにが ありますか。<br>～さんのまちに きょうかい/やま が ありますか。",
+        "sign": "Nghe thấy: なにが ありますか / ～がありますか",
+        "answer": "TH1: はい、[Danh từ] <span class='font-bold text-rose-600'>が</span> あります。<br>TH2: いいえ、ありません。",
+        "example": "はい、おてら <span class='font-bold text-rose-600'>が</span> あります。(Vâng, có chùa)",
         "vocabTags": ["Địa điểm", "Phương hướng"]
       }
     ]
@@ -145,11 +161,11 @@
     ],
     "qa": [
       {
-        "type": "Hành động trong quá khứ",
-        "question": "きのう / せんしゅう、何をしましたか。",
-        "sign": "Nghe thời gian quá khứ (きのう, せんしゅう) + ましたか",
-        "answer": "Chia động từ đuôi ました / ませんでした",
-        "example": "べんきょうしました。(Đã học bài)",
+        "type": "Hành động / Di chuyển trong quá khứ",
+        "question": "きのう / せんしゅう、何を しましたか。<br>きのう どこかへ 行きましたか。",
+        "sign": "Nghe thời gian quá khứ (きのう, せんしゅう)",
+        "answer": "Hành động: [V] <span class='font-bold text-rose-600'>ました</span><br>Di chuyển (Có đi): はい、[Địa điểm] <span class='font-bold text-rose-600'>へ</span> いきました。<br>Di chuyển (Không đi): いいえ、どこ<span class='font-bold text-rose-600'>へも</span> いきませんでした。",
+        "example": "Vũng Tàu <span class='font-bold text-rose-600'>へ</span> 行きました。(Đã đi Vũng Tàu)",
         "conjugation": {
           "title": "Chia thì quá khứ (Đã làm gì)",
           "rules": [
@@ -157,39 +173,39 @@
             "<span class='font-bold'>Phủ định:</span> Bỏ ます thêm <span class='font-bold text-rose-500'>ませんでした</span> (VD: 行きます ➔ 行きませんでした)"
           ]
         },
-        "vocabTags": ["Thời gian", "Đối tượng", "Động từ"]
+        "vocabTags": ["Thời gian", "Địa điểm", "Động từ"]
+      },
+      {
+        "type": "Đồng hành (Làm cùng ai)",
+        "question": "せんしゅう、だれと ～Vましたか。",
+        "sign": "Nghe chữ: だれと (Cùng với ai)",
+        "answer": "[Đối tượng] <span class='font-bold text-rose-600'>と</span> Vました。",
+        "example": "ともだち <span class='font-bold text-rose-600'>と</span> がっこうへ 行きました。(Đi học cùng bạn)",
+        "vocabTags": ["Đối tượng"]
       },
       {
         "type": "Lý do (Tại sao)",
         "question": "どうして 学校へ 行きませんでしたか。",
-        "sign": "Nghe chữ: どうして (Doushite - Tại sao)",
-        "answer": "[Lý do] + から。",
-        "example": "ねつがありますから。(Vì bị sốt)",
+        "sign": "Nghe chữ: どうして (Tại sao)",
+        "answer": "Trả lời bằng [Lý do] + <span class='font-bold text-rose-600'>から</span>。",
+        "example": "いそがしかったです <span class='font-bold text-rose-600'>から</span>。(Vì tôi bận)<br>ねつが あります <span class='font-bold text-rose-600'>から</span>。(Vì bị sốt)",
         "vocabTags": ["Lý do / Trạng thái"]
       },
       {
-        "type": "Mong muốn (Muốn có gì)",
-        "question": "今、何がいちばん ほしいですか。",
-        "sign": "Nghe chữ: ほしい (Hoshii - Muốn có)",
-        "answer": "[Danh từ] が いちばん ほしいです。",
-        "example": "パソコンがいちばんほしいです。(Muốn máy tính nhất)",
+        "type": "Mong muốn (Muốn CÓ GÌ / Muốn LÀM GÌ)",
+        "question": "今、何がいちばん ほしいですか。<br>今、何を したいですか。",
+        "sign": "Nghe chữ: ほしい (Muốn có) / Vたい (Muốn làm)",
+        "answer": "Muốn Đồ vật: [Danh từ] <span class='font-bold text-rose-600'>が</span> ほしいです。<br>Muốn Hành động: [Động từ bỏ ます] + <span class='font-bold text-rose-600'>たいです</span>。",
+        "example": "カメラ <span class='font-bold text-rose-600'>が</span> いちばん ほしいです。(Muốn máy ảnh)<br>にほん <span class='font-bold text-rose-600'>へ</span> いき<span class='font-bold text-rose-600'>たいです</span>。(Muốn đi Nhật)",
         "vocabTags": ["Sở thích / Đồ vật", "Mong muốn"]
       },
       {
         "type": "Mục đích di chuyển",
-        "question": "どこへ ～を V(bỏ ます) に 行きますか。",
+        "question": "あした 何をしに 行きますか。<br>どこへ ～を V(bỏ ます) に 行きますか。",
         "sign": "Nghe cụm: に 行きます / 来ます (Đi/Đến để...)",
-        "answer": "[Địa điểm] へ [Động từ bỏ ます / Danh từ] に 行きます。",
-        "example": "スーパーへ かいものに 行きます。(Đi siêu thị để mua sắm)",
+        "answer": "[Địa điểm] <span class='font-bold text-rose-600'>へ</span> [Động từ bỏ ます / Danh từ] <span class='font-bold text-rose-600'>に</span> 行きます。",
+        "example": "スーパー <span class='font-bold text-rose-600'>へ</span> くだものをかい<span class='font-bold text-rose-600'>に</span> 行きます。(Đi siêu thị để mua trái cây)",
         "vocabTags": ["Địa điểm", "Động từ"]
-      },
-      {
-        "type": "Hỏi cảm nhận về Sự vật/Sự việc",
-        "question": "～は どうですか。",
-        "sign": "Nghe thấy: どう (Như thế nào)",
-        "answer": "Trả lời trực tiếp bằng [Tính từ]. (Nhớ chia thì quá khứ nếu việc đã qua)",
-        "example": "とても おもしろいです。(Rất thú vị) / あまり おいしくないです。(Không ngon lắm)",
-        "vocabTags": []
       }
     ]
   },
@@ -278,55 +294,41 @@
         "type": "Lời mời / Rủ rê",
         "question": "こんばん、いっしょに ～Vませんか。",
         "sign": "Nghe: いっしょに (Cùng nhau) + Động từ ませんか",
-        "answer": "Đồng ý: いいですね。Vましょう / Từ chối: すみません。ちょっと...",
-        "example": "いいですね。行きましょう。(Hay đấy, cùng đi thôi)",
+        "answer": "Đồng ý: いいですね。V<span class='font-bold text-rose-600'>ましょう</span>。<br>Từ chối: すみません。ちょっと... / こんばんはちょっと...",
+        "example": "いいですね。行き<span class='font-bold text-rose-600'>ましょう</span>。(Hay đấy, cùng đi thôi)",
         "vocabTags": ["Sự kiện", "Trạng từ", "Thời gian"]
       },
       {
         "type": "Sự kiện đang diễn ra ở đâu",
         "question": "[Địa điểm] で 何が ありますか。",
         "sign": "Nghe: [Nơi chốn] で ... ありますか",
-        "answer": "[Tên sự kiện] が あります。",
-        "example": "サッカーのしあいがあります。(Có trận bóng đá)",
+        "answer": "[Địa điểm] <span class='font-bold text-rose-600'>で</span> [Tên sự kiện] <span class='font-bold text-rose-600'>が</span> あります。",
+        "example": "あさくさ <span class='font-bold text-rose-600'>で</span> おまつり <span class='font-bold text-rose-600'>が</span> あります。(Ở Asakusa có lễ hội)",
         "vocabTags": ["Sự kiện", "Địa điểm / Giải trí"]
+      },
+      {
+        "type": "So sánh NHẤT (Trong 1 phạm vi)",
+        "question": "～で 何 / だれ / どこ / いつ が いちばん Aですか。",
+        "sign": "Nghe chữ: いちばん (Ichiban - Nhất)",
+        "answer": "[Danh từ / Người / Nơi] <span class='font-bold text-rose-600'>が</span> いちばん [Tính từ] です。",
+        "example": "くだもので りんご <span class='font-bold text-rose-600'>が</span> いちばん すきです。<br>１ねんで １２がつ <span class='font-bold text-rose-600'>が</span> いちばん いそがしいです。",
+        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống", "Tính từ"]
+      },
+      {
+        "type": "So sánh HƠN (Giữa 2 đối tượng)",
+        "question": "N1 と N2 と どちらが Aですか。",
+        "sign": "Nghe: と... と... どちら (Giữa... và... cái nào)",
+        "answer": "TH1: N1 <span class='font-bold text-rose-600'>のほうが</span> Aです。<br>TH2: どちら<span class='font-bold text-rose-600'>も</span> Aです。",
+        "example": "りんご <span class='font-bold text-rose-600'>のほうが</span> すきです。(Tôi thích táo hơn) <br>どちら<span class='font-bold text-rose-600'>も</span> すきです。(Cả 2 đều thích)",
+        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống", "Tính từ"]
       },
       {
         "type": "Xác nhận hành động đã hoàn thành",
         "question": "もう ～Vました か。",
         "sign": "Nghe chữ: もう (Mou - Đã... chưa)",
-        "answer": "TH1 (Xong rồi): はい、もう Vました。 \nTH2 (Chưa xong): いいえ、まだです。 (Hoặc: いいえ、まだ Vていません)",
-        "example": "はい、もう 食べました。(Vâng, đã ăn rồi)",
-        "conjugation": {
-          "title": "Chia thì quá khứ (Đã làm gì)",
-          "rules": [
-            "<span class='font-bold'>Khẳng định:</span> Bỏ ます thêm <span class='font-bold text-rose-500'>ました</span> (VD: 食べます ➔ 食べました)"
-          ]
-        },
+        "answer": "TH1 (Xong rồi): はい、もう Vました。<br>TH2 (Chưa xong): いいえ、まだです。",
+        "example": "はい、もう たべました。(Vâng, tôi đã ăn rồi)",
         "vocabTags": ["Trạng từ"]
-      },
-      {
-        "type": "So sánh NHẤT (Trong 1 phạm vi)",
-        "question": "～で 何 / だれ / どこ が いちばん Aですか。",
-        "sign": "Nghe chữ: いちばん (Ichiban - Nhất)",
-        "answer": "[Danh từ] が いちばん [Tính từ] です。",
-        "example": "くだもので りんごが いちばん すきです。(Trong trái cây, thích táo nhất)",
-        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống", "Tính từ"]
-      },
-      {
-        "type": "So sánh HƠN (Giữa 2 đối tượng)",
-        "question": "A と B と どちらが Aですか。",
-        "sign": "Nghe: と... と... どちら (Giữa... và... cái nào)",
-        "answer": "TH1: A のほうが Aです。 \nTH2: どちらも Aです。",
-        "example": "りんごの ほうが すきです。(Tôi thích táo hơn) / どちらも すきです。(Cả 2 đều thích)",
-        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống", "Tính từ"]
-      },
-      {
-        "type": "Hỏi số lượng vật đang có",
-        "question": "～が いくつ ありますか。",
-        "sign": "Nghe thấy: いくつ (Bao nhiêu cái)",
-        "answer": "[Danh từ] が [Số lượng] あります。(Lượng từ phải đứng sát trước động từ あります)",
-        "example": "りんご が むっつ あります。(Có 6 quả táo)",
-        "vocabTags": ["Đồ ăn / Thức uống"]
       }
     ]
   },
@@ -394,35 +396,27 @@
     ],
     "qa": [
       {
-        "type": "Hỏi vị trí",
-        "question": "～は どこに ありますか / いますか。",
-        "sign": "Nghe: どこに ありますか (Vật) / いますか (Người/Con vật)",
-        "answer": "[Vị trí] に あります / います。",
-        "example": "つくえの うえに あります。(Ở trên bàn)",
-        "vocabTags": ["Vị trí / Phương hướng"]
-      },
-      {
-        "type": "Hỏi sự tồn tại lân cận",
-        "question": "～の近くに 何がありますか。",
-        "sign": "Nghe: なにが ありますか",
-        "answer": "[Tên vật/Địa điểm] が あります。",
-        "example": "コンビニが あります。(Có cửa hàng tiện lợi)",
+        "type": "Hỏi vị trí & Tồn tại lân cận",
+        "question": "～さんのうちは どこに ありますか。<br>～さん / ねこ は どこに いますか。<br>～の近くに 何が ありますか。",
+        "sign": "Nghe: どこに ありますか / いますか / 近くに 何が",
+        "answer": "Trả lời vị trí: [Vị trí] <span class='font-bold text-rose-600'>に</span> あります / います。<br>Trả lời sự vật: [Danh từ] <span class='font-bold text-rose-600'>が</span> あります。",
+        "example": "HCM <span class='font-bold text-rose-600'>に</span> あります。(Ở HCM)<br>こうえんの なか <span class='font-bold text-rose-600'>に</span> います。(Ở trong công viên)<br>レストラン <span class='font-bold text-rose-600'>が</span> あります。(Có nhà hàng)",
         "vocabTags": ["Vị trí / Phương hướng", "Đồ vật / Địa điểm"]
       },
       {
         "type": "Công cụ / Phương tiện thực hiện",
-        "question": "何で パン を きりますか。",
+        "question": "何で パンを きりますか。<br>ベトナム人は 何で ごはんをたべますか。",
         "sign": "Nghe: 何で (Nande - Bằng cái gì)",
-        "answer": "[Công cụ] + で + Động từ。",
-        "example": "ナイフで 切ります。(Cắt bằng dao)",
+        "answer": "[Công cụ] <span class='font-bold text-rose-600'>で</span> [Động từ Vます]。",
+        "example": "ナイフ <span class='font-bold text-rose-600'>で</span> 切ります。(Cắt bằng dao)<br>はし <span class='font-bold text-rose-600'>で</span> たべます。(Ăn bằng đũa)",
         "vocabTags": ["Công cụ / Đồ dùng", "Động từ"]
       },
       {
-        "type": "Hiện tại tiếp diễn (Đang làm gì)",
-        "question": "～さんは 何を していますか。",
-        "sign": "Nghe: 何を していますか / Vていますか",
-        "answer": "Chia động từ đuôi ています。",
-        "example": "ごはんを 食べています。(Đang ăn cơm)",
+        "type": "Hiện tại tiếp diễn / Ai đang làm gì",
+        "question": "～さんは (いま) 何を していますか。<br>だれが ～V していますか。",
+        "sign": "Nghe: 何を していますか / だれが",
+        "answer": "Hỏi việc đang làm: [Động từ chia thể て] <span class='font-bold text-rose-600'>います</span>。<br>Hỏi người làm: [Tên người] <span class='font-bold text-rose-600'>が</span> Vています。",
+        "example": "ごはんを たべ<span class='font-bold text-rose-600'>ています</span>。(Đang ăn cơm)<br>アリさん <span class='font-bold text-rose-600'>が</span> はなしています。(Bạn Ali đang nói)",
         "conjugation": {
           "title": "Cách chia thể て (Te form)",
           "rules": [
