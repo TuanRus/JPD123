@@ -106,12 +106,32 @@ function speakJapanese(event, customText = null) {
 /**
  * Build and inject the Q&A list into the DOM
  */
+
 function renderQAList(questions, lessonVocab) {
     const container = document.getElementById('qa-container');
     container.innerHTML = '';
 
     questions.forEach((item, index) => {
         const vocabSection = createVocabSection(item.vocabTags, lessonVocab, index);
+        
+        // --- TÍNH NĂNG MỚI: BẢNG CHIA ĐỘNG TỪ ---
+        let conjugationSection = '';
+        if (item.conjugation) {
+            const rulesHtml = item.conjugation.rules.map(rule => `<li class="flex items-start gap-2"><i class="fa-solid fa-arrow-right text-rose-400 mt-1 text-xs"></i><span>${rule}</span></li>`).join('');
+            conjugationSection = `
+                <div class="mt-4 border border-rose-100 bg-rose-50/30 rounded-xl p-4">
+                    <button onclick="toggleVisibility('conj-${index}')" class="text-sm font-bold text-rose-600 flex items-center gap-2 hover:text-rose-700 transition w-full text-left">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i> Bíp kíp: ${item.conjugation.title}
+                    </button>
+                    <div id="conj-${index}" class="hidden mt-3 pt-3 border-t border-rose-100">
+                        <ul class="space-y-2 text-sm text-slate-700">
+                            ${rulesHtml}
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+
         const card = document.createElement('div');
         card.className = "bg-white rounded-2xl p-6 shadow-sm border border-slate-200";
         card.innerHTML = `
@@ -125,6 +145,7 @@ function renderQAList(questions, lessonVocab) {
                 <div class="flex flex-col sm:flex-row"><div class="sm:w-1/4 text-slate-500 font-semibold">Trả lời:</div><div class="sm:w-3/4 text-emerald-700 font-medium">${item.answer}</div></div>
                 <div class="bg-slate-50 p-4 rounded-xl border border-slate-100 italic text-slate-600">${item.example}</div>
             </div>
+            ${conjugationSection}
             ${vocabSection}
         `;
         container.appendChild(card);

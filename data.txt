@@ -58,17 +58,17 @@
       {
         "type": "Khoảng cách / Thời gian di chuyển",
         "question": "～から～まで どのくらいですか。",
-        "sign": "Nghe thấy: から (Kara), まで (Made), どのくらい (Bao lâu)",
-        "answer": "[Phương tiện] + で + [Thời gian] + くらいです。",
-        "example": "バイクで 20分くらいです。(Đi xe máy khoảng 20 phút)",
+        "sign": "Nghe thấy: から, まで, どのくらい (Bao lâu)",
+        "answer": "[Phương tiện] + で + [Thời gian] + ぐらいです。 (Nếu đi bộ thì KHÔNG dùng で)",
+        "example": "バイクで 20分くらいです。(Đi xe máy khoảng 20 phút) / あるいて 10分ぐらいです。(Đi bộ khoảng 10 phút)",
         "vocabTags": ["Phương tiện", "Thời lượng", "Số đếm cơ bản", "Thời gian (Phút)", "Thời gian (Giờ)"]
       },
       {
         "type": "Miêu tả địa điểm",
         "question": "～は どんなところ / まち ですか。",
         "sign": "Nghe thấy: どんな (Donna - Như thế nào)",
-        "answer": "[Tính từ] + ところ / まち です。",
-        "example": "きれいなまちです。(Là thành phố đẹp)",
+        "answer": "TH1: [Tính từ な] + な + ところ/まち です。\nTH2: [Tính từ い] + ところ/まち です。",
+        "example": "きれいな まちです。(Là thành phố đẹp) / あたらしい まちです。(Là thành phố mới)",
         "vocabTags": ["Tính từ", "Địa điểm"]
       },
       {
@@ -150,6 +150,13 @@
         "sign": "Nghe thời gian quá khứ (きのう, せんしゅう) + ましたか",
         "answer": "Chia động từ đuôi ました / ませんでした",
         "example": "べんきょうしました。(Đã học bài)",
+        "conjugation": {
+          "title": "Chia thì quá khứ (Đã làm gì)",
+          "rules": [
+            "<span class='font-bold'>Khẳng định:</span> Bỏ ます thêm <span class='font-bold text-rose-500'>ました</span> (VD: 食べます ➔ 食べました)",
+            "<span class='font-bold'>Phủ định:</span> Bỏ ます thêm <span class='font-bold text-rose-500'>ませんでした</span> (VD: 行きます ➔ 行きませんでした)"
+          ]
+        },
         "vocabTags": ["Thời gian", "Đối tượng", "Động từ"]
       },
       {
@@ -170,11 +177,19 @@
       },
       {
         "type": "Mục đích di chuyển",
-        "question": "あした 何をしに 行きますか。",
-        "sign": "Nghe cụm: 何をしに行きますか",
+        "question": "どこへ ～を V(bỏ ます) に 行きますか。",
+        "sign": "Nghe cụm: に 行きます / 来ます (Đi/Đến để...)",
         "answer": "[Địa điểm] へ [Động từ bỏ ます / Danh từ] に 行きます。",
         "example": "スーパーへ かいものに 行きます。(Đi siêu thị để mua sắm)",
         "vocabTags": ["Địa điểm", "Động từ"]
+      },
+      {
+        "type": "Hỏi cảm nhận về Sự vật/Sự việc",
+        "question": "～は どうですか。",
+        "sign": "Nghe thấy: どう (Như thế nào)",
+        "answer": "Trả lời trực tiếp bằng [Tính từ]. (Nhớ chia thì quá khứ nếu việc đã qua)",
+        "example": "とても おもしろいです。(Rất thú vị) / あまり おいしくないです。(Không ngon lắm)",
+        "vocabTags": []
       }
     ]
   },
@@ -276,28 +291,42 @@
         "vocabTags": ["Sự kiện", "Địa điểm / Giải trí"]
       },
       {
-        "type": "Hành động đã xong chưa",
-        "question": "もう ～Vましたか。",
+        "type": "Xác nhận hành động đã hoàn thành",
+        "question": "もう ～Vました か。",
         "sign": "Nghe chữ: もう (Mou - Đã... chưa)",
-        "answer": "はい、もう Vました / いいえ、まだです",
+        "answer": "TH1 (Xong rồi): はい、もう Vました。 \nTH2 (Chưa xong): いいえ、まだです。 (Hoặc: いいえ、まだ Vていません)",
         "example": "はい、もう 食べました。(Vâng, đã ăn rồi)",
+        "conjugation": {
+          "title": "Chia thì quá khứ (Đã làm gì)",
+          "rules": [
+            "<span class='font-bold'>Khẳng định:</span> Bỏ ます thêm <span class='font-bold text-rose-500'>ました</span> (VD: 食べます ➔ 食べました)"
+          ]
+        },
         "vocabTags": ["Trạng từ"]
       },
       {
-        "type": "So sánh NHẤT",
+        "type": "So sánh NHẤT (Trong 1 phạm vi)",
         "question": "～で 何 / だれ / どこ が いちばん Aですか。",
         "sign": "Nghe chữ: いちばん (Ichiban - Nhất)",
         "answer": "[Danh từ] が いちばん [Tính từ] です。",
-        "example": "りんごがいちばんすきです。(Thích táo nhất)",
-        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống"]
+        "example": "くだもので りんごが いちばん すきです。(Trong trái cây, thích táo nhất)",
+        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống", "Tính từ"]
       },
       {
         "type": "So sánh HƠN (Giữa 2 đối tượng)",
-        "question": "N1 と N2 と どちらが Aですか。",
+        "question": "A と B と どちらが Aですか。",
         "sign": "Nghe: と... と... どちら (Giữa... và... cái nào)",
-        "answer": "N1 のほうが Aです。 (Hoặc: どちらも Aです)",
-        "example": "N1 のほうが すきです。(Thích N1 hơn)",
-        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống"]
+        "answer": "TH1: A のほうが Aです。 \nTH2: どちらも Aです。",
+        "example": "りんごの ほうが すきです。(Tôi thích táo hơn) / どちらも すきです。(Cả 2 đều thích)",
+        "vocabTags": ["So sánh / Lựa chọn", "Đồ ăn / Thức uống", "Tính từ"]
+      },
+      {
+        "type": "Hỏi số lượng vật đang có",
+        "question": "～が いくつ ありますか。",
+        "sign": "Nghe thấy: いくつ (Bao nhiêu cái)",
+        "answer": "[Danh từ] が [Số lượng] あります。(Lượng từ phải đứng sát trước động từ あります)",
+        "example": "りんご が むっつ あります。(Có 6 quả táo)",
+        "vocabTags": ["Đồ ăn / Thức uống"]
       }
     ]
   },
@@ -394,6 +423,14 @@
         "sign": "Nghe: 何を していますか / Vていますか",
         "answer": "Chia động từ đuôi ています。",
         "example": "ごはんを 食べています。(Đang ăn cơm)",
+        "conjugation": {
+          "title": "Cách chia thể て (Te form)",
+          "rules": [
+            "<div class='font-bold text-indigo-700 mb-1 border-b border-rose-100 pb-1'>Nhóm 3: Bỏ ます ➔ て</div><ul class='list-disc pl-5 mb-3 text-slate-600'><li>きます ➔ きて</li><li>～します ➔ ～して</li></ul>",
+            "<div class='font-bold text-indigo-700 mb-1 border-b border-rose-100 pb-1'>Nhóm 2: Bỏ ます ➔ て</div><ul class='list-disc pl-5 mb-3 text-slate-600'><li>たべます ➔ たべて</li><li>ねます ➔ ねて</li></ul>",
+            "<div class='font-bold text-indigo-700 mb-1 border-b border-rose-100 pb-1'>Nhóm 1: Có 5 trường hợp</div><ul class='space-y-2 text-slate-600'><li><span class='font-semibold'>TH1: Tận cùng き ➔ いて</span><br>かきます ➔ かいて<br><em class='text-xs text-rose-500'>* Ngoại lệ: いきます ➔ いって</em></li><li><span class='font-semibold'>TH2: Tận cùng ぎ ➔ いで</span><br>いそぎます ➔ いそいで</li><li><span class='font-semibold'>TH3: Tận cùng し ➔ して</span><br>かします ➔ かして</li><li><span class='font-semibold'>TH4: Tận cùng に, み, び ➔ んで</span><br>しにます ➔ しんで<br>のみます ➔ のんで<br>よびます ➔ よんで</li><li><span class='font-semibold'>TH5: Tận cùng い, ち, り ➔ って</span><br>かいます ➔ かって<br>まちます ➔ まって<br>とります ➔ とって</li></ul>"
+          ]
+        },
         "vocabTags": ["Động từ"]
       }
     ]
